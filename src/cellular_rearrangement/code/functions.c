@@ -532,17 +532,18 @@ void preserve_cellvolume(int nbCells, int nbNodes, int maxCellvolume, int *heapL
 // Export solution to corresponding 'output' folder
 //==============================================================================
 void export_solution(int step, int nbNodes, int *isAssigned) {
-  char fileName[228];
+	char fileName[228];
 	sprintf(fileName, "output/sol%04d.txt", step);
 	printf("[%d] Exporting solution to '%s'\n", step, fileName);
 
-  FILE *solFile = NULL;
-  solFile = fopen(fileName, "w");
-  assert(solFile != NULL);
+	FILE *solFile = NULL;
+	solFile = fopen(fileName, "w");
+
+	assert(solFile != NULL);
 
 	for (int l = 0; l < nbNodes; l++) {
 		fprintf(solFile, "%d\n", isAssigned[l]);
 	}
 
-  fclose(solFile);
+	fclose(solFile);
 }

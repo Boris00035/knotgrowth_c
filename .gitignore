@@ -1,0 +1,6 @@
+knotgrowth_c.egg-info
+*.so
+output
+__pycache__
+.venv
+dist

@@ -1,0 +1,1 @@
+1. Want to make it so the C code returns the current state of the cells to python, instead of writing it to a file like it does now so that a clean loop can be made that does not read the input from a file.

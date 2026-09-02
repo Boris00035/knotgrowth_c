@@ -1,0 +1,17 @@
+[project]
+name = "knotgrowth-c"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[build-system]
+requires = ["setuptools", "cython"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+ext-modules = [    
+    {name = "cellular_rearrangement", sources = ["src/cellular_rearrangement/code/cellular_rearrangement_cython.pyx", "src/cellular_rearrangement/code/cellular_rearrangement.c", "src/cellular_rearrangement/code/functions.c"], include-dirs = ["src/cellular_rearrangement/code"], libraries = ["fftw3"]},
+]
