@@ -11,7 +11,7 @@
 #include "functions.h"
 #define PI 3.141592653589793238
 
-void cellular_rearrangement() {
+void cellular_rearrangement(float targetVolume) {
   //============================================================================
   clock_t time_start, time_end;
   double time_elapsed;
@@ -82,7 +82,7 @@ void cellular_rearrangement() {
   if (dim==3) backward = fftw_plan_dft_c2r(4, nbPerDim, ft_phi, phi, FFTW_MEASURE);
 
   // Export initial configuration to output
-  export_solution(0, nbNodes, isAssigned);
+  // export_solution(0, nbNodes, isAssigned);
   display_data(dim, nbNodes, nbCells, nbTypes, dt, typeTension);
 
   // ============================================================================
@@ -107,10 +107,10 @@ void cellular_rearrangement() {
       preserve_cellvolume(nbCells, nbNodes, maxCellvolume, heapLen, bidkeyHeap, isAssigned, currentVolume, volume, alpha, epsilon0, epsilonBar, phi, price, bid);
       //
       // Export solution to output
-      export_solution(l*nbSteps+k+1, nbNodes, isAssigned);
     }
   }
-
+  export_solution(nbStages*nbSteps, nbNodes, isAssigned);
+  
   // ======================================================================
   // Deallocate memory
   // ======================================================================

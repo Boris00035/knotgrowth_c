@@ -1,5 +1,5 @@
 cdef extern from "cellular_rearrangement.h":
-    void cellular_rearrangement()
+    void cellular_rearrangement(float targetVolume)
 
-def run():
-    cellular_rearrangement()
+def run(float targetVolume):
+    cellular_rearrangement(targetVolume)

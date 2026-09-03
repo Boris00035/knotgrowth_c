@@ -1,0 +1,1 @@
+recursive-include src/cellular_rearrangement/code *.c *.h
