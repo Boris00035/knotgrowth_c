@@ -66,7 +66,7 @@ void load_parameters(char *paramPath, int *_dim, int *_nbNodesByRow, int *_nbNod
 			*_sigmaStages = sigmaStages;
 
 			FILE *sigmaFile = NULL;
-			sigmaFile = fopen("output/sigmavalues.txt", "w");
+			sigmaFile = fopen("src/cellular_rearrangement/data/output/sigmavalues.txt", "w");
 			assert(sigmaFile != NULL);
 			for (int l = 0; l < nbSigmas; l++) {
 				fprintf(sigmaFile, "%lf ", sigmaStages[l]);
@@ -533,7 +533,7 @@ void preserve_cellvolume(int nbCells, int nbNodes, int maxCellvolume, int *heapL
 //==============================================================================
 void export_solution(int step, int nbNodes, int *isAssigned) {
 	char fileName[228];
-	sprintf(fileName, "output/sol%04d.txt", step);
+	sprintf(fileName, "src/cellular_rearrangement/data/output/sol%04d.txt", step);
 	printf("[%d] Exporting solution to '%s'\n", step, fileName);
 
 	FILE *solFile = NULL;
