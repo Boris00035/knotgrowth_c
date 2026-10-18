@@ -143,4 +143,6 @@ void cellular_rearrangement(float targetVolume) {
   time_end = clock();
   time_elapsed = (double) (time_end - time_start) / CLOCKS_PER_SEC;
   printf("%lf\n", time_elapsed);
+
+  
 }

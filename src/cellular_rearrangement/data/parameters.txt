@@ -15,10 +15,9 @@ $NumberCells
 $NumberTypes
 2
 $NbCellsPerType
-3 1
+1 20
 $SigmaPerStage
-1.0 0.53 1.0
-1.0 0.53 1.0
+1.0 1.0 1.0
 $Fluctuation
 0.0
 $ErrorTolerance
