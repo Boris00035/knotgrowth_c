@@ -52,7 +52,14 @@ Y = linspace(0,(nbNodesByRow-1)/(nbNodesByCol-1),nbNodesByRow);
 for t=0:nbStages-1
     fprintf('Making frame %d...\n',t);
 %    makeFrames(t,dt,dimension,MovWriter);
-    f = figure('visible','off');
+    f = figure('Visible','off', ...
+    'Units','pixels', ...
+    'Position',[100 100 1000 1000]);
+
+    set(f, 'DefaultAxesFontSize', 20);
+    set(f, 'DefaultTextFontSize', 20);
+    set(f, 'DefaultLineLineWidth', 1.5);
+
     hold on;
     outFile = sprintf('src/cellular_rearrangement/data/output/sol%04d.txt',t);
     name = sprintf('Level Set-based Scheme:       t = %f', t*dt);
@@ -91,7 +98,7 @@ for t=0:nbStages-1
     end
 
     sigma = display_sigma(t,nbStages,nbTypes,cellLabel,tensionStages,adhten);
-    xlabel(sigma,'Fontsize',8);
+    xlabel(sigma);
     title(name);
     hold off;
     writeVideo(MovWriter, getframe(f));
