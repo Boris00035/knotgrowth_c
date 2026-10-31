@@ -36,9 +36,9 @@ To setup a simulation, access subfolder `/data`, and edit `parameters.txt` and `
 
 ### Parameters ###
 
-* `$Dimension` : spatial dimension of a given cell aggregate, that is, either `2`- or `3`-dimensional 
+* `$Dimension` : spatial dimension of a given cell aggregate, that is, either `2`- or `3`-dimensional (in the 3d case the number of nodes in the third axis is given by `$NodesByRow`)
 * `$NodesByRow` : number of nodes per row in domain discretization
-* `$NodesByCol` : number of nodes per column in domain discretization
+* `$NodesByCol` : number of nodes per column in domain discretization 
 * `$NumberStages` : number of stages at which sigmas (weights at cell-cell junctions) changes 
 * `$NbStepsPerStage` : number of time steps per stage
 * `$TimeStepSize` : time step size
@@ -104,4 +104,8 @@ MIT License. See the LICENSE file for details
 
 ## Commandlist
 
-For create the visual: ```matlab -nodisplay -r "addpath(genpath('src/cellular_rearrangement/code/visualization_matlab')); generate_result"```
+For create the visual: ```matlab -nodisplay -batch "addpath(genpath('src/cellular_rearrangement/code/visualization_matlab')); generate_result"```
+
+## Todo:
+* Make a custom initial condition.
+* Find out how the volume constraint works in the code.

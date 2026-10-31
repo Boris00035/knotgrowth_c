@@ -3,12 +3,12 @@ run:
 
 build:
     uv build
-    uv pip install -e .
+    CFLAGS="-g3 -O0 -fno-omit-frame-pointer" CXXFLAGS="-g3 -O0 -fno-omit-frame-pointer" uv pip install -e . --no-build-isolation --force-reinstall
 
 init:
     uv sync
 
-br:
-    uv build
-    uv pip install -e .
-    uv run python -m main
+br: build run
+
+matlab_vis:
+    matlab -nodisplay -batch "addpath(genpath('src/visualization_matlab')); generate_result"

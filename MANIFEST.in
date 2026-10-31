@@ -1,1 +1,1 @@
-recursive-include src/cellular_rearrangement/code *.c *.h
+recursive-include src/cellular_rearrangement *.c *.h

@@ -11,7 +11,7 @@
 #include "functions.h"
 #define PI 3.141592653589793238
 
-void cellular_rearrangement(float targetVolume) {
+void cellular_rearrangement() {
   //============================================================================
   clock_t time_start, time_end;
   double time_elapsed;
@@ -34,12 +34,12 @@ void cellular_rearrangement(float targetVolume) {
 
   // Load parameters
   char paramPath[228];
-  strcpy(paramPath, "src/cellular_rearrangement/data/parameters.txt");
+  strcpy(paramPath, "data/parameters.txt");
   load_parameters(paramPath, &dim, &nbNodesByRow, &nbNodesByCol, &nbCells, &nbTypes, &nbCellsOfType, &nbStages, &nbSteps, &dt, &sigmaStages, &typeTension, &osc, &epsilonMin, &alpha, &epsilon0, &nbLocalNodes);
 
   // Load initial configuration data
   char initconfigPath[228];
-  strcpy(initconfigPath, "src/cellular_rearrangement/data/initconfig.txt");
+  strcpy(initconfigPath, "data/initconfig.txt");
   int nbNodes = nbNodesByRow*nbNodesByCol;
   if (dim==3) nbNodes *= nbNodesByRow;
   load_initconfig(initconfigPath, nbNodes, nbCells, &typeOfCell, &isAssigned, &volume, &phi);
@@ -82,7 +82,7 @@ void cellular_rearrangement(float targetVolume) {
   if (dim==3) backward = fftw_plan_dft_c2r(4, nbPerDim, ft_phi, phi, FFTW_MEASURE);
 
   // Export initial configuration to output
-  // export_solution(0, nbNodes, isAssigned);
+  export_solution(0, nbNodes, isAssigned);
   display_data(dim, nbNodes, nbCells, nbTypes, dt, typeTension);
 
   // ============================================================================
@@ -105,11 +105,12 @@ void cellular_rearrangement(float targetVolume) {
 
       // Preserve cell volumes using auction dynamics
       preserve_cellvolume(nbCells, nbNodes, maxCellvolume, heapLen, bidkeyHeap, isAssigned, currentVolume, volume, alpha, epsilon0, epsilonBar, phi, price, bid);
-      //
-      // Export solution to output
+      
+      printf("Stage: %d, step: %d \n", l, k);
+      export_solution(l*nbSteps+k+1, nbNodes, isAssigned);
     }
   }
-  export_solution(nbStages*nbSteps, nbNodes, isAssigned);
+  // export_solution(nbStages*nbSteps, nbNodes, isAssigned);
   
   // ======================================================================
   // Deallocate memory

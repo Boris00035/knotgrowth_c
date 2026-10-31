@@ -7,11 +7,25 @@ requires-python = ">=3.14"
 dependencies = []
 
 [build-system]
-requires = ["setuptools", "cython"]
+requires = ["setuptools", "wheel", "cython"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-ext-modules = [    
-    {name = "cellular_rearrangement", sources = ["src/cellular_rearrangement/code/cellular_rearrangement_cython.pyx", "src/cellular_rearrangement/code/cellular_rearrangement.c", "src/cellular_rearrangement/code/functions.c"], include-dirs = ["src/cellular_rearrangement/code"], libraries = ["fftw3"]},
+
+[[tool.setuptools.ext-modules]]
+
+name = "cellular_rearrangement"
+sources = [
+    "src/cellular_rearrangement/cellular_rearrangement_cython.pyx",
+    "src/cellular_rearrangement/cellular_rearrangement.c",
+    "src/cellular_rearrangement/functions.c",
 ]
+include-dirs = ["src/cellular_rearrangement"]
+libraries = ["fftw3"]
+# below doesnt work :(
+# extra-compile-args = [
+#     "-g3",
+#     "-O0",
+#     "-fno-omit-frame-pointer",
+# ]

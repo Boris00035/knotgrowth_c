@@ -49,7 +49,7 @@ X = linspace(0,1,nbNodesByCol);
 Y = linspace(0,(nbNodesByRow-1)/(nbNodesByCol-1),nbNodesByRow);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for t=0:nbStages-1
+for t=0:nbSteps*nbStages
     fprintf('Making frame %d...\n',t);
 %    makeFrames(t,dt,dimension,MovWriter);
     f = figure('Visible','off', ...
