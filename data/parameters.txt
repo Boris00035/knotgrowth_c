@@ -1,21 +1,21 @@
 $Dimension
 3
 $NodesByRow
-300
+100
 $NodesByCol
-300
+100
 $NumberStages
 1
 $NbStepsPerStage
-1
+100
 $TimeStepSize
-0.025
+0.0005
 $NumberCells
-3
+2
 $NumberTypes
-3
+2
 $NbCellsPerType
-1 1 1
+1 1
 $SigmaPerStage
 1.000 1.600 1.000 1.000 1.000 1.000
 $Fluctuation
@@ -27,7 +27,7 @@ $EpsilonScalingFactor
 $InitialEpsilonValue
 0.0000001
 $NumberLocalNodes
-20
+7
 $CellLabel
 BOW
 $DisplayType

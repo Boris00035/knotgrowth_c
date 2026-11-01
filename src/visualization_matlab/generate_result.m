@@ -1,11 +1,11 @@
-MovWriter = VideoWriter('src/cellular_rearrangement/data/output/simulation.avi', 'Motion JPEG AVI');
+MovWriter = VideoWriter('output/simulation.avi', 'Motion JPEG AVI');
 % MovWriter.Quality = 100;
 MovWriter.FrameRate = 10;
 open(MovWriter);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf('Getting parameters...\n');
-fid = fopen('src/cellular_rearrangement/data/parameters.txt','r');
+fid = fopen('data/parameters.txt','r');
 dimension = extract_data(fid,'$Dimension','%d',1);
 nbNodesByRow = extract_data(fid,'$NodesByRow','%d',1);
 nbNodesByCol = extract_data(fid,'$NodesByCol','%d',1);
@@ -22,7 +22,7 @@ if nbStages == 1
     nbSigmas = 0.5*nbTypes*(nbTypes+1);
     tensionStages = extract_data(fid,'$SigmaPerStage','%f',nbSigmas)';
 else
-    tensionStages = readmatrix('src/cellular_rearrangement/data/output/sigmavalues.txt');
+    tensionStages = readmatrix('output/sigmavalues.txt');
 end
 cellLabel = extract_data(fid,'$CellLabel','%c',nbTypes);
 adhten = extract_data(fid,'$DisplayType','%c',7);
@@ -31,7 +31,7 @@ fclose(fid);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf('Getting initial configuration data...\n');
-fid = fopen('src/cellular_rearrangement/data/initconfig.txt','r'); fgetl(fid);
+fid = fopen('data/initconfig.txt','r'); fgetl(fid);
 
 typeOfCell = zeros(nbCells,1);
 for i=1:nbCells
@@ -61,7 +61,7 @@ for t=0:nbSteps*nbStages
     set(f, 'DefaultLineLineWidth', 1.5);
 
     hold on;
-    outFile = sprintf('src/cellular_rearrangement/data/output/sol%04d.txt',t);
+    outFile = sprintf('output/sol%04d.txt',t);
     name = sprintf('Level Set-based Scheme:       t = %f', t*dt);
 
     if dimension == 2
