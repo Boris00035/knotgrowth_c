@@ -107,5 +107,5 @@ MIT License. See the LICENSE file for details
 For create the visual: ```matlab -nodisplay -batch "addpath(genpath('src/cellular_rearrangement/code/visualization_matlab')); generate_result"```
 
 ## Todo:
-* Make a custom initial condition.
+* Make a custom initial condition. Start with writing a script that creates a initconfig.txt from a 3_1.npy, and possible include the parameters.txt creation but this can be manual at first.
 * Find out how the volume constraint works in the code.
